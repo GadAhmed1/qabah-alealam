@@ -172,7 +172,10 @@
                     <i class="bi bi-x-circle"></i>
                 </button>
             </span>
-
+            <div class="language-switcher position-fixed top-0 end-0 mb-3 ">
+                <button id="toggleLanguageBtn" class="btn "></button>
+            </div>
+            
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <i class="bi bi-lightning-charge"></i>
                 <span class="fs-4 sidebar-text">Qabah Alealam</span>
@@ -413,6 +416,77 @@
                 console.error('Error updating course:', error);
             }
         });
+        // النصوص باللغتين
+const translations = {
+    en: {
+        toggleLanguageBtn: "🌐 تغيير اللغة",
+        home: "Home",
+        addCustomer: "Add Customers",
+        courseName: "Course Name",
+        description: "Description",
+        price: "Price",
+        lastUpdated: "Last Updated",
+        action: "Action",
+        modifyCourse: "Modify Course",
+        courseDetails: "Course Details",
+        courseNameLabel: "Course Name",
+        courseDescriptionLabel: "Description",
+        coursePriceLabel: "Price",
+        courseTagsLabel: "Tags (comma-separated)",
+        courseVideoUrlLabel: "Video URL",
+        saveChanges: "Save Changes"
+    },
+    ar: {
+        toggleLanguageBtn: "🌐 Toggel language ",
+        home: "الرئيسية",
+        addCustomer: "إضافة عميل",
+        courseName: "اسم الدورة",
+        description: "الوصف",
+        price: "السعر",
+        lastUpdated: "آخر تحديث",
+        action: "الإجراء",
+        modifyCourse: "تعديل الدورة",
+        courseDetails: "تفاصيل الدورة",
+        courseNameLabel: "اسم الدورة",
+        courseDescriptionLabel: "الوصف",
+        coursePriceLabel: "السعر",
+        courseTagsLabel: "الوسوم (مفصولة بفاصلة)",
+        courseVideoUrlLabel: "رابط الفيديو",
+        saveChanges: "حفظ التعديلات"
+    }
+};
+
+// تحديد اللغة الحالية
+let currentLanguage = "en";
+
+// دالة لتغيير النصوص حسب اللغة
+function setLanguage(language) {
+    document.getElementById("toggleLanguageBtn").innerText = translations[language].toggleLanguageBtn;
+    document.querySelector("a[href='/'] .sidebar-text").innerText = translations[language].home;
+    document.querySelector("a[href='./user/add.html'] .sidebar-text").innerText = translations[language].addCustomer;
+    document.querySelector("th[scope='col']:nth-child(2)").innerText = translations[language].courseName;
+    document.querySelector("th[scope='col']:nth-child(3)").innerText = translations[language].description;
+    document.querySelector("th[scope='col']:nth-child(4)").innerText = translations[language].price;
+    document.querySelector("th[scope='col']:nth-child(5)").innerText = translations[language].lastUpdated;
+    document.querySelector("th[scope='col']:nth-child(6)").innerText = translations[language].action;
+    document.getElementById("courseDetailsLabel").innerText = translations[language].courseDetails;
+    document.querySelector("label[for='modifyCourseName']").innerText = translations[language].courseNameLabel;
+    document.querySelector("label[for='modifyCourseDescription']").innerText = translations[language].courseDescriptionLabel;
+    document.querySelector("label[for='modifyCoursePrice']").innerText = translations[language].coursePriceLabel;
+    document.querySelector("label[for='modifyCourseTags']").innerText = translations[language].courseTagsLabel;
+    document.querySelector("label[for='modifyCourseVideoUrl']").innerText = translations[language].courseVideoUrlLabel;
+    document.querySelector("button[type='submit']").innerText = translations[language].saveChanges;
+}
+
+// إعداد الزر للتبديل بين اللغتين
+document.getElementById("toggleLanguageBtn").addEventListener("click", () => {
+    currentLanguage = currentLanguage === "en" ? "ar" : "en";
+    setLanguage(currentLanguage);
+});
+
+// تحميل اللغة الافتراضية
+setLanguage(currentLanguage);
+
     </script>
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/sidebars.js"></script>

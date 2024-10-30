@@ -6,9 +6,9 @@ const port = process.env.PORT || 3000; // Use the PORT from .env or default to 3
 
 // Middleware for static files
 app.use('/homepage', express.static('../client/HTML/'));
-app.use('/addcourse', express.static('../client/HTML/dashboard.html'));
+// app.use('/addcourse', express.static('../client/HTML/dashboard.html'));
 app.use('/showcourse', express.static('../client/HTML/'));
-app.use('/anotherdash', express.static('../client/HTML/Admin'));
+app.use('/dashboard', express.static('../client/HTML/Admin'));
 
 // Middleware to handle JSON and URL-encoded form data
 app.use(express.json()); // For parsing JSON data

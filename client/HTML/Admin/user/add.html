@@ -178,7 +178,9 @@
             </svg>
           </button>
         </li>
-      </ul>
+      </ul> 
+
+    
     </div>
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
@@ -207,13 +209,15 @@
           <i class="bi bi-x-circle"></i>
         </button>
       </span>
-
+      <li class="nav-item mt-3">
+        <button class="btn btn-outline-ligh position-fixed top-0 end-0 m-3" onclick="toggleLanguage()">🌐 تغيير اللغة</button>
+    </li>
       <a
         href="/"
         class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
       >
         <i class="bi bi-lightning-charge"></i>
-        <span class="fs-4 sidebar-text">Sidebar</span>
+        <span class="fs-4 sidebar-text">Courses</span>
       </a>
       <hr />
       <ul class="nav nav-pills flex-column mb-auto">
@@ -232,6 +236,14 @@
               <use xlink:href="#people-circle" />
             </svg>
             <span class="sidebar-text"> Add Customers </span>
+          </a>
+        </li>
+        <li>
+          <a href="../pro/view.php" class="nav-link text-white ">
+            <svg class="bi pe-none me-2" width="16" height="16">
+              <use xlink:href="#people-circle" />
+            </svg>
+            <span class="sidebar-text"> Product </span>
           </a>
         </li>
       </ul>
@@ -307,6 +319,49 @@
     <script src="../js/main.js"></script>
 
     <script>
+      function toggleLanguage() {
+    const elements = document.querySelectorAll('.sidebar-text, label, .btn');
+    elements.forEach((el) => {
+        if (el.innerText === 'Home') {
+            el.innerText = 'الرئيسية';
+        } else if (el.innerText === 'الرئيسية') {
+            el.innerText = 'Home';
+        } else if (el.innerText === 'Add Customers') {
+            el.innerText = 'إضافة عملاء';
+        } else if (el.innerText === 'إضافة عملاء') {
+            el.innerText = 'Add Customers';
+        } else if (el.innerText === 'Course Name:') {
+            el.innerText = 'اسم الدورة:';
+        } else if (el.innerText === 'اسم الدورة:') {
+            el.innerText = 'Course Name:';
+        } else if (el.innerText === 'Description:') {
+            el.innerText = 'الوصف:';
+        } else if (el.innerText === 'الوصف:') {
+            el.innerText = 'Description:';
+        } else if (el.innerText === 'Price:') {
+            el.innerText = 'السعر:';
+        } else if (el.innerText === 'السعر:') {
+            el.innerText = 'Price:';
+        } else if (el.innerText === 'Tags (comma-separated):') {
+            el.innerText = 'العلامات (مفصولة بفواصل):';
+        } else if (el.innerText === 'العلامات (مفصولة بفواصل):') {
+            el.innerText = 'Tags (comma-separated):';
+        } else if (el.innerText === 'Video URL:') {
+            el.innerText = 'رابط الفيديو:';
+        } else if (el.innerText === 'رابط الفيديو:') {
+            el.innerText = 'Video URL:';
+        } else if (el.innerText === 'Add Course') {
+            el.innerText = 'إضافة دورة';
+        } else if (el.innerText === 'إضافة دورة') {
+            el.innerText = 'Add Course';
+        } else if (el.innerText === '🌐 تغيير اللغة') {
+            el.innerText = '🌐 Toggle Language';
+        } else if (el.innerText === '🌐 Toggle Language') {
+            el.innerText = '🌐 تغيير اللغة';
+        }
+    });
+}
+
       // Handle course addition form submission
       document.getElementById('addCourseForm').addEventListener('submit', async function(event) {
           event.preventDefault();
@@ -340,6 +395,7 @@
               console.error('Error adding course:', error);
           }
       });
+      
     </script>
   </body>
 </html>
